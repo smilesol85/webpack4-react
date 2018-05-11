@@ -3,17 +3,21 @@ const HtmlWebPackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
+const clientPath = 'client';
+const serverPath = 'server';
+const outputPath = 'dist';
+
 module.exports = {
     // instead of entry, output
     // "dev": "webpack --mode development ./src/js/index.js --output ./dist/main.js",
     // "build": "webpack --mode production ./src/js/index.js --output ./dist/main.js"
     entry: {
-        app: './client/js/index.js',
-        print: './client/js/print.js'
+        app: `./${clientPath}/js/index.js`,
+        print: `./${clientPath}/js/print.js`
     },
     output: {
         filename: '[name].bundle.js',
-        path: path.resolve(__dirname, 'dist'),
+        path: path.resolve(__dirname, `${outputPath}`),
         publicPath: '/'
     },
     module: {
@@ -24,7 +28,7 @@ module.exports = {
             //     "build": "webpack --mode production --module-bind js=babel-loader"
             // }
             {
-                test: /\.(js|jsx)$/,
+                test: /\.js$/,
                 exclude: /node_modules/,
                 use: {
                     loader: "babel-loader"
@@ -53,10 +57,10 @@ module.exports = {
     },
     plugins: [
         new CleanWebpackPlugin(['dist']),
-        new HtmlWebPackPlugin({
-            template: "./client/index.html",
-            filename: "./index.html"
-        }),
+        // new HtmlWebPackPlugin({
+        //     template: `./${clientPath}/index.html`,
+        //     filename: `./index.html`
+        // }),
         new MiniCssExtractPlugin({
             filename: "[name].css",
             chunkFilename: "[id].css"
