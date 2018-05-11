@@ -8,8 +8,8 @@ module.exports = {
     // "dev": "webpack --mode development ./src/js/index.js --output ./dist/main.js",
     // "build": "webpack --mode production ./src/js/index.js --output ./dist/main.js"
     entry: {
-        app: './src/js/index.js',
-        print: './src/js/print.js'
+        app: './client/js/index.js',
+        print: './client/js/print.js'
     },
     output: {
         filename: '[name].bundle.js',
@@ -54,7 +54,7 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin(['dist']),
         new HtmlWebPackPlugin({
-            template: "./src/index.html",
+            template: "./client/index.html",
             filename: "./index.html"
         }),
         new MiniCssExtractPlugin({
