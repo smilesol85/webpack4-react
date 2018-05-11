@@ -10,7 +10,7 @@ const Html = ({ preloadState, script, appComponent }) => (
         </head>
         <body>
             <div id="app" dangerouslySetInnerHTML={{ __html: appComponent }} />
-            {/* <script src={script} /> */}
+            <script src={script} />
         </body>
     </html>
 );
